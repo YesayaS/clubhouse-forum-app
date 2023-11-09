@@ -50,7 +50,7 @@ exports.post = [
           errors: [{ msg: "Wrong admin passcode!" }],
         });
         return;
-      }
+      } else isAdmin = true;
 
       bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
         try {
