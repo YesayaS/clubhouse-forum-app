@@ -10,3 +10,11 @@ body {
 a {
   color: #00b7ff;
 }
+
+form>div{
+  padding: 2px 0;
+}
+
+.error-msg{
+  color: red;
+}
