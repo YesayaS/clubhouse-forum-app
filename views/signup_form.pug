@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Signup
+  form(action="" method="POST")
+    div
+      label(for="username") Username: 
+      input(type="text" name="username" required="true" autocomplete="false")
+    div
+      label(for="password") Password: 
+      input(type="password" name="password" required='true')
+    div
+      label(for="password-confirm") Confirm password: 
+      input(type="password" name="password-confirm" required='true')
+    div
+      label(for="member") Member passcode:
+      input(type="password" name="member" required='true')
+    div
+      label(for="admin") Are you admin? 
+      input(type="password" name="admin")
+    if errors
+      ul.error-msg
+        each error in errors
+          li=error.msg
+    br
+    button Signup
+
+  a(href="./login") have account? login!
