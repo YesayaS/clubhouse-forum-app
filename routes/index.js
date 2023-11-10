@@ -19,7 +19,7 @@ router.get(
         .populate({ path: "author", model: User, select: "username -_id" });
       res.render("index", {
         title: "Express",
-        user: req.user.username,
+        user: req.user,
         posts: post,
       });
       return;

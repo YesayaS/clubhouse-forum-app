@@ -3,11 +3,11 @@ extends layout
 block content
   h1 Clubhouse Secret Secret Club
   if user 
-    h2 Welcome back #{user}!
+    h2 Welcome back #{user.username}!
     a(href='/logout') logout
     br
     br
-    a(href="/create-post") 
+    a(href="/post/create") 
       button
         h2 Create Post
   else
@@ -23,5 +23,8 @@ block content
       p=post.body 
       h5=post.formatted_date
       if user
-        h5=post.author.username
+        h5= post.author && post.author.username ? post.author.username : '[user deleted]'
+      if user && user.is_admin === true
+        form(action=`/post/${post._id}/delete` method="POST")
+          button delete
     hr
