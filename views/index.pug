@@ -1,11 +1,22 @@
 extends layout
 
 block content
-  h1= title
+  h1 Clubhouse Secret Secret Club
   if user 
+    h2 Welcome back #{user}!
     a(href='/logout') logout
   else
     p
       a(href='/signup') Signup
     p
       a(href='/login') Login
+
+  h2 Latest Post
+  each post in posts 
+    div
+      h3=post.title
+      p=post.body 
+      h5=post.formatted_date
+      if user
+        h5=post.author.username
+    hr
