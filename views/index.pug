@@ -2,7 +2,10 @@ extends layout
 
 block content
   h1= title
-  p
-    a(href='/signup') Signup
-  p
-     a(href='/login') Login
+  if user 
+    a(href='/logout') logout
+  else
+    p
+      a(href='/signup') Signup
+    p
+      a(href='/login') Login
