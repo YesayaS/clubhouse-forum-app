@@ -5,6 +5,11 @@ block content
   if user 
     h2 Welcome back #{user}!
     a(href='/logout') logout
+    br
+    br
+    a(href="/create-post") 
+      button
+        h2 Create Post
   else
     p
       a(href='/signup') Signup

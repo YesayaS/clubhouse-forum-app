@@ -8,6 +8,7 @@ var logger = require("morgan");
 require("dotenv").config();
 
 var indexRouter = require("./routes/index");
+var postRouter = require("./routes/post");
 var signupRouter = require("./routes/signup");
 var loginRouter = require("./routes/login");
 var usersRouter = require("./routes/users");
@@ -48,6 +49,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/create-post", postRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.get("/logout", (req, res, next) => {
