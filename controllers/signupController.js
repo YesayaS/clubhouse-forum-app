@@ -9,13 +9,15 @@ exports.get = asyncHandler(function (req, res, next) {
 });
 
 exports.post = [
-  body("username", "username must be at least 3 charactes")
+  body("username")
     .trim()
     .isLength({ min: 1 })
-    .escape(),
-  body("username")
+    .withMessage("username must be at least 3 charactes")
     .custom((value) => !/\s/.test(value))
-    .withMessage("No spaces are allowed in the username"),
+    .withMessage("Username should not have space")
+    .isAlphanumeric()
+    .withMessage("Username should not have special character")
+    .escape(),
   body("password", "Password must be at least 6 characters")
     .isLength({ min: 1 })
     .escape(),
