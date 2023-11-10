@@ -4,6 +4,10 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 
 exports.get = asyncHandler(function (req, res, next) {
+  if (req.user) {
+    res.redirect("/");
+    return;
+  }
   res.render("login_form", {});
 });
 

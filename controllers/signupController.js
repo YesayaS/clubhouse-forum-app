@@ -5,6 +5,10 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 exports.get = asyncHandler(function (req, res, next) {
+  if (req.user) {
+    res.redirect("/");
+    return;
+  }
   res.render("signup_form", {});
 });
 
