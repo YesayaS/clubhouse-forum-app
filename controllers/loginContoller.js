@@ -24,8 +24,7 @@ exports.post = [
     } else {
       passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/",
-        failureFlash: true,
+        failureRedirect: "/login",
       })(req, res, next);
     }
   }),
