@@ -49,7 +49,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/create-post", postRouter);
+app.use("/post", postRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.get("/logout", (req, res, next) => {

@@ -3,7 +3,7 @@ const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
-exports.get = asyncHandler(function (req, res, next) {
+exports.create_get = asyncHandler(function (req, res, next) {
   if (!req.user) {
     res.redirect("/");
     return;
@@ -11,7 +11,7 @@ exports.get = asyncHandler(function (req, res, next) {
   res.render("post_form", {});
 });
 
-exports.post = [
+exports.create_post = [
   body("title", "Title is required").trim().isLength({ min: 1 }).escape(),
   asyncHandler(async function (req, res, next) {
     const errors = validationResult(req);
@@ -29,5 +29,12 @@ exports.post = [
       const result = await post.save();
       res.redirect("/");
     }
+  }),
+];
+
+exports.delete_post = [
+  asyncHandler(async function (req, res, next) {
+    await Post.findByIdAndDelete(req.params.id);
+    res.redirect("/");
   }),
 ];
