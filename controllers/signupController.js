@@ -15,18 +15,18 @@ exports.get = asyncHandler(function (req, res, next) {
 exports.post = [
   body("username")
     .trim()
-    .isLength({ min: 1 })
-    .withMessage("username must be at least 3 charactes")
+    .isLength({ min: 3 })
+    .withMessage("Username must be at least 3 characters")
     .custom((value) => !/\s/.test(value))
-    .withMessage("Username should not have space")
+    .withMessage("Username should not have a space")
     .isAlphanumeric()
-    .withMessage("Username should not have special character")
+    .withMessage("Username should not have a special character")
     .escape(),
   body("password", "Password must be at least 6 characters")
-    .isLength({ min: 1 })
+    .isLength({ min: 6 })
     .escape(),
   body("password-confirm", "Confirmation password must same as password")
-    .isLength({ min: 1 })
+    .isLength({ min: 6 })
     .custom((value, { req }) => {
       return value === req.body.password;
     })
